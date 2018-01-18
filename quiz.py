@@ -14,22 +14,23 @@ def quiz():
 	myFile.close()
 
 	myKey = open("key.txt","r")				# Opens French file for reading
-	key = myKey.readlines()					# Creates list of French words 
+	key = myKey.readlines()					# Creates list of French words
 	myKey.close()
 
 	english = []
-	french = []		
+	french = []
 
 
-	# Creates new lists for English and French words without newlines 
+	# Creates new lists for English and French words without newlines
 	for i in range(len(quiz)):
 		english.append(quiz[i].rstrip('\n'))
 	for i in range(len(key)):
 		french.append(key[i].rstrip('\n'))
 
-	print("Type the French Word")
+	print("Type the French Word in quotes")
 
 	# Quiz: prompts User to enter answer, compares it to French translation
+	# Note: Answers must be in quotations
 
 	right = 0								# Correct answer counter
 	wrong = 0								# Wrong answer counter
@@ -46,8 +47,13 @@ def quiz():
 			print("wrong\ncorrect answer: " + str(french[num]))
 			wrong += 1
 
+	total = float(len(english))
+	score = (float(right) / total) * 100
+
+
 	# Results
 	print("You translated " + str(right) + " word(s) correctly and " + str(wrong) + " word(s) incorrectly")
+	print("Score:" + str(score) + "%")
 
 
 def add():
@@ -89,5 +95,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-
